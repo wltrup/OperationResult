@@ -35,7 +35,19 @@ public enum OperationResult<A> {
     public var didFail: Bool {
         return didSucceed == false
     }
-    
+
+    public func map<B> (_ transform: (A) -> B) -> OperationResult<B> {
+        switch self {
+
+        case let .success(a):
+            return .success(transform(a))
+
+        case let .failure(strings):
+            return .failure(strings)
+
+        }
+    }
+
 }
 
 extension OperationResult: Equatable where A: Equatable {}
