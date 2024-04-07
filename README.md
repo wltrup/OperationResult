@@ -8,6 +8,7 @@
 ## What
 
 **OperationResult** is a Swift Package Manager package for iOS/tvOS (10.0 and above), watchOS (4.0 and above), and macOS (10.14 and above), under Swift 5.0 and above,  defining an enumeration similar to `Result` but with `Array<String>` in place of an error type:
+
 ```swift
 public enum OperationResult<A> {
     
@@ -41,6 +42,7 @@ extension OperationResult: Codable where A: Codable {
 ```
 
 One neat use for this type is when considering a long sequence of numerical operations, some of which may fail. For example, division by zero, logarithm of a non-positive number, arc-sine or arc-cosine of a number with a magnitude larger than 1, and so on. Rather than stop the execution with throw-catches or risk runtime errors, the `OperationResult<A>` type allows a clean progression to the end, accumulating error messages along the way.  Here's a representative implementation, using division as an example:
+
 ```swift
 typealias NumericalResult = OperationResult<Double>
 
@@ -69,10 +71,6 @@ extension NumericalResult {
 ## Installation
 
 **OperationResult** is provided only as a Swift Package Manager package, because I'm moving away from CocoaPods and Carthage, and can be easily installed directly from Xcode.
-
-## Author
-
-Wagner Truppel, trupwl@gmail.com
 
 ## License
 
